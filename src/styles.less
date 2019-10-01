@@ -1,1 +1,92 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css");
+
+.b-black {
+    background: #000000;
+}
+
+.b-white {
+    background: #FFFFFF;
+}
+
+.b-grey {
+    background: #EEEEEE;
+}
+
+.b-darkgrey {
+    background: #666666;
+}
+
+.b-lightgrey {
+    background: #F1F1F1;
+}
+
+.c-black {
+    color: #000000;
+}
+
+.c-white {
+    color: #FFFFFF;
+}
+
+.p-t-20 {
+    padding-top: 20px;
+}
+
+.p-b-20 {
+    padding-bottom: 20px;
+}
+
+.m-t-20 {
+    margin-top: 20px;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 5px 10px 5px 10px;
+    border: none;
+}
+
+.c-btn-blue {
+    color: #FFFFFF;
+    background: #336699;
+    &:hover {
+        background: #8497aa;
+    }
+}
+
+.c-btn-red {
+    color: #FFFFFF;
+    background: #CC0000;
+    &:hover {
+        background: #c59898;
+    }
+}
+
+td {
+    padding: 5px 10px 5px 0;
+}
+
+.fadein{
+    animation-name: fadein;
+    animation-duration: .25s;
+    animation-fill-mode: forwards;
+}
+
+.fadeout{
+    animation-name: fadeout;
+    animation-duration: .25s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadein {
+    from {  opacity:0    }
+    to   {  opacity:1 }
+}
+
+@keyframes fadeout {
+    from {  opacity:1    }
+    to   {  opacity:0 }
+}
