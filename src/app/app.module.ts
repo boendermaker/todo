@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { TodoMainComponent } from './components/todo-main/todo-main.component';
+import { TodoMainComponent } from './views/todo-main/todo-main.component';
 
 import { ApiService } from './services/api.service';
 import { StoreService } from './services/store.service';
