@@ -13,5 +13,54 @@
         justify-content: center;
         align-items: center;
     }
+}
 
+.createwindow-wrapper {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 5000;
+    display: flex;
+    justify-content: center;
+    background: #FF9900;
+    color: #FFFFFF;
+    
+    .contentwrapper {
+        align-self: center;
+        border: 1px solid #000;
+    }
+
+}
+
+.editwindow-wrapper {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 5000;
+    display: flex;
+    justify-content: center;
+    background: #336699;
+    color: #FFFFFF;
+    
+    .contentwrapper {
+        align-self: center;
+        border: 1px solid #000;
+    }
+
+}
+
+.btn-create {
+    position: fixed;
+    z-index: 100;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+
+    &:hover {
+        cursor: pointer;
+    }
 }

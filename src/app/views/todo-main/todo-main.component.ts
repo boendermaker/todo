@@ -11,6 +11,7 @@ import { StoreService } from '../../services/store.service';
 export class TodoMainComponent implements OnInit {
 
     loading = false;
+    win = { create: false, edit: false};
 
     constructor(private apiService: ApiService,
                 private store: StoreService) { }
@@ -20,20 +21,42 @@ export class TodoMainComponent implements OnInit {
         this.store.stream('loading').subscribe(res => this.loading = res);
 
         this.loadTodoListing();
-
     }
 
     createStores() {
         this.store.createSubject('loading');
-        this.store.createSubject('todolisting');
+        this.store.createSubject('list_all');
     }
 
     loadTodoListing() {
         this.store.add('loading', true);
         this.apiService.getAllTodos().subscribe((res) => {
-            this.store.add('todolisting', res);
+            this.store.add('list_all', res);
             this.store.add('loading', false);
-        });        
+        });
+    }
+
+    toggleDone($event) {
+        const id = +$event.id;
+        const done = +$event.done === 0 ? 1 : 0
+        const payload = {id: id, done: done};
+        
+        this.store.add('loading', true);
+        this.apiService.toggleDone(payload).subscribe((res) => {
+            this.store.add('loading', false);
+            this.loadTodoListing();
+        },
+        (err) => { 
+            this.store.add('loading', false);
+        });
+    }
+
+    deleteItem($event) {
+        console.log('delete', $event);
+    }
+
+    ctrlWin(name, todo) {
+        this.win[name] = todo;
     }
 
 }

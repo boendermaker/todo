@@ -1,3 +1,14 @@
-<p>
+<div>
   todo-listing works!
-</p>
+
+    <div>
+        <table class="listitem-table">
+            <tr *ngFor="let listitem of list_all; let i = index" [className]="+listitem?.done ? 'b-item-done' : 'b-item-open'">
+                <td>{{listitem?.done}}{{listitem?.headline}}</td>
+                <td width="20" class="b-item-done" (click)="emitToggleDone({id: listitem?.id, done: listitem?.done})"><img src="../../../assets/done.svg" class="fluidimg" /></td>
+                <td width="20" class="b-item-delete" (click)="emitDeleteItem(listitem?.id)"><img src="../../../assets/delete.svg" class="fluidimg" /></td>
+            </tr>
+        </table>
+    </div>
+
+</div>
