@@ -1,7 +1,9 @@
 .listitem-table {
     width: 100%;
+    margin: 0;
     border-collapse: separate;
-    border-spacing: 10px;
+    border-spacing: 0 20px;
+    box-sizing: border-box;
 
     td, th {
         padding: 20px;
@@ -10,6 +12,15 @@
             background: #EEEEEE;
             cursor: pointer;
         }
+    }
+}
+
+.nodatawrapper {
+    display: flex;
+    justify-content: center;
+    
+    .nodatamodal {
+        align-self: center;
     }
 }
 

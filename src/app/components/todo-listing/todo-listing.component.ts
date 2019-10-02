@@ -14,7 +14,6 @@ export class TodoListingComponent implements OnInit {
 
     list_all = [];
 
-
     constructor(private apiService: ApiService,
         private store: StoreService) { }
 
@@ -26,7 +25,7 @@ export class TodoListingComponent implements OnInit {
         this.ondelete.emit($event);
     }
 
-    emitToggleDone($event, payload) {
+    emitToggleDone($event) {
         this.ontoggledone.emit($event);
     }
 

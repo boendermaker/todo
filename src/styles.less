@@ -19,6 +19,7 @@
 body {
     font-family: 'Titillium Web';
     font-size: 18px;
+    box-sizing: border-box;
 }
 
 .b-black {
@@ -49,6 +50,14 @@ body {
     color: #FFFFFF;
 }
 
+.p-0 {
+    padding: 0;
+}
+
+.p-20 {
+    padding: 20px;
+}
+
 .p-t-20 {
     padding-top: 20px;
 }
@@ -63,11 +72,6 @@ body {
 
 .m-b-20 {
     margin-bottom: 20px;
-}
-
-button {
-    padding: 5px 10px 5px 10px;
-    border: none;
 }
 
 .c-btn-blue {
@@ -95,6 +99,34 @@ td {
     height: auto;
 }
 
+button {
+    margin: 0;
+    padding: 10px 20px 10px 20px;
+    border: none;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: none;
+    background: #F1F1F1;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: vertical;
+    border: none;
+    background: #F1F1F1;
+}
+
+h1 {
+    font-size: 50px;
+    margin:0;
+}
+
 .fadein{
     animation-name: fadein;
     animation-duration: .25s;
@@ -116,3 +148,22 @@ td {
     from {  opacity:1    }
     to   {  opacity:0 }
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }

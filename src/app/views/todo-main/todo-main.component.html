@@ -4,21 +4,34 @@
     </div>
 </div>
 
-<div class="createwindow-wrapper fadein" *ngIf="win['create']">
-    <div class="contentwrapper">xxx</div>
+<app-win-create *ngIf="win.create"
+    (onsave)="saveItem($event)"
+    (onclose)="closeWinCreate()"
+></app-win-create>
+
+<div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 p-20 b-left">
+            <h1>MINITODO</h1>
+        </div>
+    </div>
+    <div class="row m-b-20">
+        <div class="col-12 b-right p-20">{{currentDate}}</div>
+    </div>
 </div>
 
-<div class="editwindow-wrapper fadein" *ngIf="win['edit']">
-    <div class="contentwrapper">xxx</div>
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 p-0">
+                    <app-todo-listing
+                        (ontoggledone)="toggleDone($event)"
+                        (ondelete)="deleteItem($event)"
+                    ></app-todo-listing>
+            </div>
+        </div>
+</div>
+
 </div>
 
 <div class="btn-create" (click)="ctrlWin('create', true)"><img src="../../../assets/plus.svg" /></div>
-
-<div>
-  todo-main works!
-  {{loading}}
-  <app-todo-listing
-    (ontoggledone)="toggleDone($event)"
-    (ondelete)="deleteItem($event)"
-  ></app-todo-listing>
-</div>

@@ -33,4 +33,12 @@ export class ApiService {
         return this.http.post(`${this._baseUrl}?action=toggledone`, JSON.stringify(payload), this._getHeaders());
     }
 
+    saveTodoItem(payload) {
+        return this.http.post(`${this._baseUrl}?action=savetodoitem`, JSON.stringify(payload), this._getHeaders());
+    }
+
+    deleteTodoItem(payload){
+        return this.http.post(`${this._baseUrl}?action=deletetodoitem`, JSON.stringify({"id": payload}), this._getHeaders());
+    }
+
 }

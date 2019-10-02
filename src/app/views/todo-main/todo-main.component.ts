@@ -11,6 +11,7 @@ import { StoreService } from '../../services/store.service';
 export class TodoMainComponent implements OnInit {
 
     loading = false;
+    currentDate = this.currentDate = new Date().toLocaleString();;
     win = { create: false, edit: false};
 
     constructor(private apiService: ApiService,
@@ -52,11 +53,34 @@ export class TodoMainComponent implements OnInit {
     }
 
     deleteItem($event) {
-        console.log('delete', $event);
+        this.store.add('loading', true);
+        this.apiService.deleteTodoItem($event).subscribe((res) => {
+            this.store.add('loading', false);
+            this.loadTodoListing();
+        },
+        (err) => { 
+            this.store.add('loading', false);
+        });
     }
 
     ctrlWin(name, todo) {
         this.win[name] = todo;
+    }
+
+    closeWinCreate() {
+        this.ctrlWin('create', false);
+    }
+
+    saveItem($event) {
+        this.store.add('loading', true);
+        this.apiService.saveTodoItem($event).subscribe((res) => {
+            this.store.add('loading', false);
+            this.loadTodoListing();
+            this.closeWinCreate();
+        },
+        (err) => { 
+            this.store.add('loading', false);
+        });
     }
 
 }

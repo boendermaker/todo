@@ -11,12 +11,16 @@ import { TodoMainComponent } from './views/todo-main/todo-main.component';
 import { ApiService } from './services/api.service';
 import { StoreService } from './services/store.service';
 import { TodoListingComponent } from './components/todo-listing/todo-listing.component';
+import { WinCreateComponent } from './components/win-create/win-create.component';
+import { WinEditComponent } from './components/win-edit/win-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoMainComponent,
-    TodoListingComponent
+    TodoListingComponent,
+    WinCreateComponent,
+    WinEditComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,61 @@
+<div class="createwindow-wrapper fadein">
+    <div class="contentwrapper">
+
+        <div class="container">
+        <div class="row">
+            <div class="col-md-12 p-t-20">
+                <h1>NEUES TODO</h1>
+                <p>Füge ein Todo hinzu indem du die Felder ausfüllst.</p>
+            </div>
+        </div>
+        
+        <form #f="ngForm" name="f">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Deadline</h3>
+                <input type="date" name="deadline" ngModel #name="ngModel" required />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Aufgabe</h3>
+                <input type="text" name="headline" ngModel 
+                #headline="ngModel" 
+                required 
+                pattern="[A-Za-z0-9äüöÄÜÖß ]{1,100}" 
+                [className]="headline.errors?.pattern ? 'errorform' : ''" 
+                />
+                <p *ngIf="headline.errors?.pattern">Nur Buchstaben und Zahlen und max 100 Zeichen.</p>
+            </div>
+        </div>
+        <div class="row m-b-20">
+            <div class="col-md-12">
+                <h3>Beschreibung</h3>
+                <textarea class="textareaheight" name="description" ngModel required 
+                #description="ngModel" 
+                pattern="[A-Za-z0-9äüöÄÜÖß ]{1,300}"
+                [className]="description.errors?.pattern ? 'textareaheight errorform' : 'textareaheight'" 
+                ></textarea>
+                <p *ngIf="description.errors?.pattern">Nur Buchstaben und Zahlen und max 300 Zeichen.</p>
+            </div>
+        </div>
+        </form>
+
+        <div class="row">
+            <div class="col-md-6">
+                <button class="formbutton" 
+                (click)="emitSaveItem(f.value)" 
+                *ngIf="(f.value.deadline && f.value.headline && f.value.description)"
+                >Speichern</button>
+            </div>
+            <div class="col-md-6">
+                <button 
+                class="formbutton" 
+                (click)="emitCloseCreateWindow()"
+                >Abbrechen</button>
+            </div>
+        </div>
+        </div>
+
+    </div>
+</div>
