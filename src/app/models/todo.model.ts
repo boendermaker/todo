@@ -1,7 +1,7 @@
 export class TodoModel {
 
-	datum: Date;
-	deadline: Date;
+	datum: Number;
+	deadline: String;
 	headline: String;
 	description: String;
 	done: Number;	

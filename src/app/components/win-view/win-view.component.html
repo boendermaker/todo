@@ -1,0 +1,51 @@
+<div class="viewwindow-wrapper fadein" [style.height.px]="innerHeight">
+        <div class="contentwrapper" [style.height.px]="innerHeight">
+    
+            <div class="container">
+            <div class="row">
+                <div class="col-md-12 p-t-20">
+                    <h1>TODO</h1>
+                    <p>Du siehst dir gerade ein Todo an.</p>
+                </div>
+            </div>
+            
+            <form #f="ngForm" name="f">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Deadline</h3>
+                    <p>Muss bis {{payload_view?.deadline | date:'dd.MM.yyyy'}} erledigt sein</p>
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col-md-12">
+                        <h3>Status</h3>
+                        <p *ngIf="+payload_view?.done === 1">Dieses Todo ist erledigt</p>
+                        <p *ngIf="+payload_view?.done === 0">Dieses Todo ist noch nicht erledigt</p>
+                    </div>
+                </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Aufgabe</h3>
+                    <p>{{payload_view?.headline}}</p>
+                </div>
+            </div>
+            <div class="row m-b-20">
+                <div class="col-md-12">
+                    <h3>Beschreibung</h3>
+                    <p>{{payload_view?.description}}</p>
+                </div>
+            </div>
+            </form>
+    
+            <div class="row">
+                <div class="col-md-12">
+                    <button 
+                    class="formbutton" 
+                    (click)="emitCloseViewWindow()" 
+                    >Schliessen</button>
+                </div>
+            </div>
+            </div>
+    
+        </div>
+    </div>

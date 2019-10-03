@@ -4,19 +4,30 @@
     </div>
 </div>
 
+<app-win-view *ngIf="win.view" 
+    [payload_view]="payload_view"
+    (onclose)="closeWinView()"
+></app-win-view>
+
 <app-win-create *ngIf="win.create"
     (onsave)="saveItem($event)"
     (onclose)="closeWinCreate()"
 ></app-win-create>
 
+<app-win-edit *ngIf="win.edit"
+    [payload_edit]="payload_edit"
+    (onupdate)="updateItem($event)"
+    (onclose)="closeWinEdit()"
+></app-win-edit>
+
 <div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 p-20 b-left">
-            <h1>MINITODO</h1>
+            <h1>MINIBRAIN</h1>
         </div>
     </div>
-    <div class="row m-b-20">
+    <div class="row m-b-10">
         <div class="col-12 b-right p-20">{{currentDate}}</div>
     </div>
 </div>
@@ -25,6 +36,8 @@
         <div class="row">
             <div class="col-md-12 p-0">
                     <app-todo-listing
+                        (onviewwin)="openWinView($event)"
+                        (oneditwin)="openWinEdit($event)"
                         (ontoggledone)="toggleDone($event)"
                         (ondelete)="deleteItem($event)"
                     ></app-todo-listing>
@@ -34,4 +47,4 @@
 
 </div>
 
-<div class="btn-create" (click)="ctrlWin('create', true)"><img src="../../../assets/plus.svg" /></div>
+<div class="btn-create" (click)="openWinCreate()"><img src="../../../assets/plus.svg" /></div>

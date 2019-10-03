@@ -13,6 +13,8 @@ import { StoreService } from './services/store.service';
 import { TodoListingComponent } from './components/todo-listing/todo-listing.component';
 import { WinCreateComponent } from './components/win-create/win-create.component';
 import { WinEditComponent } from './components/win-edit/win-edit.component';
+import { WinViewComponent } from './components/win-view/win-view.component';
+import { ModalDeleteComponent } from './components/modal-delete/modal-delete.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { WinEditComponent } from './components/win-edit/win-edit.component';
     TodoMainComponent,
     TodoListingComponent,
     WinCreateComponent,
-    WinEditComponent
+    WinEditComponent,
+    WinViewComponent,
+    ModalDeleteComponent
   ],
   imports: [
     BrowserModule,

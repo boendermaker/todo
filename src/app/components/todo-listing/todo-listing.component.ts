@@ -11,6 +11,8 @@ export class TodoListingComponent implements OnInit {
 
     @Output() ontoggledone: EventEmitter<any> = new EventEmitter<any>();
     @Output() ondelete: EventEmitter<any> = new EventEmitter<any>();
+    @Output() oneditwin: EventEmitter<any> = new EventEmitter<any>();
+    @Output() onviewwin: EventEmitter<any> = new EventEmitter<any>();
 
     list_all = [];
 
@@ -19,6 +21,14 @@ export class TodoListingComponent implements OnInit {
 
     ngOnInit() {
         this.store.stream('list_all').subscribe(res => this.list_all = res);
+    }
+
+    emitOpenViewWin($event) {
+        this.onviewwin.emit($event);
+    }
+
+    emitOpenEditWin($event) {
+        this.oneditwin.emit($event);
     }
 
     emitDeleteItem($event) {

@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { StoreService } from '../../services/store.service';
 
 @Component({
     selector: 'app-win-create',
@@ -11,9 +11,14 @@ export class WinCreateComponent implements OnInit {
     @Output() onsave: EventEmitter<any> = new EventEmitter<any>();
     @Output() onclose: EventEmitter<any> = new EventEmitter<any>();
 
-    constructor() { }
+    innerHeight$ = null;
+    innerHeight: Number;
+
+    constructor(private store: StoreService) { }
 
     ngOnInit() {
+        this.innerHeight$ = this.store.stream('innerheight').subscribe(res => this.innerHeight = res);
+        this.innerHeight = window.innerHeight;
     }
 
     emitCloseCreateWindow() {
@@ -25,9 +30,4 @@ export class WinCreateComponent implements OnInit {
         payload.done = 0;
         this.onsave.emit(payload);
     }
-
-    validate(field) {
-        console.log(field.errors);
-    }
-
 }

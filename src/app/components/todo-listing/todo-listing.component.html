@@ -5,10 +5,13 @@
     </div>
 
     <table class="listitem-table" *ngIf="list_all?.length > 0">
-        <tr *ngFor="let listitem of list_all; let i = index" [className]="+listitem?.done ? 'b-item-done' : 'b-item-open'">
-            <td>{{listitem?.headline}}</td>
-            <td width="20" class="b-item-done" (click)="emitToggleDone({id: listitem?.id, done: listitem?.done})"><img src="../../../assets/done.svg" class="fluidimg" /></td>
-            <td width="20" class="b-item-delete" (click)="emitDeleteItem(listitem?.id)"><img src="../../../assets/delete.svg" class="fluidimg" /></td>
+        <tr *ngFor="let listitem of list_all; let i = index" 
+        [className]="+listitem?.done ? 'b-item-done' : 'b-item-open'"
+        >
+            <td class="headline" (click)="emitOpenViewWin(listitem)">{{listitem?.headline}}</td>
+            <td width="20" class="icon b-item-done" (click)="emitToggleDone({id: listitem?.id, done: listitem?.done})"><img src="../../../assets/done.svg" class="fluidimg" /></td>
+            <td width="20" class="icon b-item-edit" (click)="emitOpenEditWin(listitem)"><img src="../../../assets/edit.svg" class="fluidimg" /></td>
+            <td width="20" class="icon b-item-delete" (click)="emitDeleteItem(listitem?.id)"><img src="../../../assets/delete.svg" class="fluidimg" /></td>
         </tr>
     </table>
 </div>

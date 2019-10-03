@@ -11,8 +11,10 @@ import { StoreService } from '../../services/store.service';
 export class TodoMainComponent implements OnInit {
 
     loading = false;
-    currentDate = this.currentDate = new Date().toLocaleString();;
-    win = { create: false, edit: false};
+    currentDate = new Date().toLocaleString();
+    payload_edit = {};
+    payload_view = {};
+    win = { create: false, edit: false, tester: true };
 
     constructor(private apiService: ApiService,
                 private store: StoreService) { }
@@ -67,8 +69,30 @@ export class TodoMainComponent implements OnInit {
         this.win[name] = todo;
     }
 
+    openWinView($event) {
+        this.payload_view = $event;
+        this.ctrlWin('view', true);
+    }
+
+    openWinCreate() {
+        this.ctrlWin('create', true);
+    }
+
+    openWinEdit($event) {
+        this.payload_edit = $event;
+        this.ctrlWin('edit', true);
+    }
+
+    closeWinView() {
+        this.ctrlWin('view', false);
+    }
+
     closeWinCreate() {
         this.ctrlWin('create', false);
+    }
+
+    closeWinEdit() {
+        this.ctrlWin('edit', false);
     }
 
     saveItem($event) {
@@ -77,6 +101,18 @@ export class TodoMainComponent implements OnInit {
             this.store.add('loading', false);
             this.loadTodoListing();
             this.closeWinCreate();
+        },
+        (err) => { 
+            this.store.add('loading', false);
+        });
+    }
+
+    updateItem($event) {
+        this.store.add('loading', true);
+        this.apiService.updateTodoItem($event).subscribe((res) => {
+            this.store.add('loading', false);
+            this.loadTodoListing();
+            this.closeWinEdit();
         },
         (err) => { 
             this.store.add('loading', false);
