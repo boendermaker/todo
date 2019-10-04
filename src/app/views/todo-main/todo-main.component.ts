@@ -15,7 +15,7 @@ export class TodoMainComponent implements OnInit {
     payload_delete = 0;
     payload_edit = {};
     payload_view = {};
-    win = { create: false, edit: false, tester: true };
+    win = { create: false, edit: false };
     modal = {delete: false};
 
     constructor(private apiService: ApiService,
@@ -88,6 +88,7 @@ export class TodoMainComponent implements OnInit {
             this.closeWinEdit();
         },
         (err) => { 
+            console.log(err);
             this.store.add('loading', false);
         });
     }

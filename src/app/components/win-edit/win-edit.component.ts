@@ -9,11 +9,12 @@ import { StoreService } from '../../services/store.service';
 export class WinEditComponent implements OnInit {
 
     @Input() payload_edit;
-    @Output() ondelete: EventEmitter<any> = new EventEmitter<any>();
+    @Output() onupdate: EventEmitter<any> = new EventEmitter<any>();
     @Output() onclose: EventEmitter<any> = new EventEmitter<any>();
 
     innerHeight$ = null;
     innerHeight: Number;
+    currentDate = new Date().toISOString().slice(0, 10);
 
     constructor(private store: StoreService) { }
 
@@ -26,8 +27,10 @@ export class WinEditComponent implements OnInit {
         this.onclose.emit();
     }
 
-    emitDeleteItem($event) {
-        this.ondelete.emit($event);
+    emitUpdateItem($event) {
+        $event.id = this.payload_edit.id;
+        $event.datum = this.currentDate;
+        this.onupdate.emit($event);
     }
 
     ngOnDestroy() {

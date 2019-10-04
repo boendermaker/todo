@@ -41,7 +41,7 @@
                     ngModel 
                     #description="ngModel" 
                     [ngModel]="payload_edit.description"
-                    pattern="[A-Za-z0-9äüöÄÜÖß ]{1,300}"
+                    pattern="[a-zA-Z0-9öäüÖÄÜ!?%&amp;()=:;#*+-&euro;&quot; ]{1,300}"
                     [className]="description.errors?.pattern ? 'textareaheight errorform' : 'textareaheight'" 
                     ></textarea>
                     <p *ngIf="description.errors?.pattern">Nur Buchstaben und Zahlen und max 300 Zeichen.</p>
@@ -51,14 +51,14 @@
     
             <div class="row">
                 <div class="col-md-6">
-                    <button class="formbutton" 
+                    <button class="formbutton c-btn-grey" 
                     (click)="emitUpdateItem(f.value)" 
                     *ngIf="(f.value.deadline && f.value.headline && f.value.description)"
                     >Aktualisieren</button>
                 </div>
                 <div class="col-md-6">
                     <button 
-                    class="formbutton" 
+                    class="formbutton c-btn-grey" 
                     (click)="emitCloseEditWindow()" 
                     >Abbrechen</button>
                 </div>
