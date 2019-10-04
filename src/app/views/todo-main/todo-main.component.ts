@@ -12,9 +12,11 @@ export class TodoMainComponent implements OnInit {
 
     loading = false;
     currentDate = new Date().toLocaleString();
+    payload_delete = 0;
     payload_edit = {};
     payload_view = {};
     win = { create: false, edit: false, tester: true };
+    modal = {delete: false};
 
     constructor(private apiService: ApiService,
                 private store: StoreService) { }
@@ -59,40 +61,11 @@ export class TodoMainComponent implements OnInit {
         this.apiService.deleteTodoItem($event).subscribe((res) => {
             this.store.add('loading', false);
             this.loadTodoListing();
+            this.closeModalDelete();
         },
         (err) => { 
             this.store.add('loading', false);
         });
-    }
-
-    ctrlWin(name, todo) {
-        this.win[name] = todo;
-    }
-
-    openWinView($event) {
-        this.payload_view = $event;
-        this.ctrlWin('view', true);
-    }
-
-    openWinCreate() {
-        this.ctrlWin('create', true);
-    }
-
-    openWinEdit($event) {
-        this.payload_edit = $event;
-        this.ctrlWin('edit', true);
-    }
-
-    closeWinView() {
-        this.ctrlWin('view', false);
-    }
-
-    closeWinCreate() {
-        this.ctrlWin('create', false);
-    }
-
-    closeWinEdit() {
-        this.ctrlWin('edit', false);
     }
 
     saveItem($event) {
@@ -117,6 +90,49 @@ export class TodoMainComponent implements OnInit {
         (err) => { 
             this.store.add('loading', false);
         });
+    }
+
+    ctrlModal(name, todo) {
+        this.modal[name] = todo;
+    }
+
+    ctrlWin(name, todo) {
+        this.win[name] = todo;
+    }
+
+    openModalDelete($event) {
+        this.payload_delete = $event;
+        this.ctrlModal('delete', true);
+    }
+
+    openWinView($event) {
+        this.payload_view = $event;
+        this.ctrlWin('view', true);
+    }
+
+    openWinCreate() {
+        this.ctrlWin('create', true);
+    }
+
+    openWinEdit($event) {
+        this.payload_edit = $event;
+        this.ctrlWin('edit', true);
+    }
+
+    closeModalDelete() {
+        this.ctrlModal('delete', false);
+    }
+
+    closeWinView() {
+        this.ctrlWin('view', false);
+    }
+
+    closeWinCreate() {
+        this.ctrlWin('create', false);
+    }
+
+    closeWinEdit() {
+        this.ctrlWin('edit', false);
     }
 
 }

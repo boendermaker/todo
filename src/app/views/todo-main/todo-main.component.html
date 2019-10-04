@@ -4,6 +4,12 @@
     </div>
 </div>
 
+<app-modal-delete *ngIf="modal.delete"
+    [payload_delete]="payload_delete"
+    (ondelete)="deleteItem($event)"
+    (onclose)="closeModalDelete()"
+></app-modal-delete>
+
 <app-win-view *ngIf="win.view" 
     [payload_view]="payload_view"
     (onclose)="closeWinView()"
@@ -39,7 +45,7 @@
                         (onviewwin)="openWinView($event)"
                         (oneditwin)="openWinEdit($event)"
                         (ontoggledone)="toggleDone($event)"
-                        (ondelete)="deleteItem($event)"
+                        (ondelete)="openModalDelete($event)"
                     ></app-todo-listing>
             </div>
         </div>

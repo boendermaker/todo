@@ -1,7 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@angular/core';
-import { NgModel } from '@angular/forms';
 import { StoreService } from '../../services/store.service';
-import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'app-win-edit',
@@ -11,7 +9,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class WinEditComponent implements OnInit {
 
     @Input() payload_edit;
-    @Output() onupdate: EventEmitter<any> = new EventEmitter<any>();
+    @Output() ondelete: EventEmitter<any> = new EventEmitter<any>();
     @Output() onclose: EventEmitter<any> = new EventEmitter<any>();
 
     innerHeight$ = null;
@@ -28,10 +26,8 @@ export class WinEditComponent implements OnInit {
         this.onclose.emit();
     }
 
-    emitUpdateItem(payload) {
-        payload.id = this.payload_edit.id;
-        payload.datum = new Date().toISOString().slice(0, 10);
-        this.onupdate.emit(payload);
+    emitDeleteItem($event) {
+        this.ondelete.emit($event);
     }
 
     ngOnDestroy() {
